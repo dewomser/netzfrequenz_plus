@@ -7,12 +7,11 @@
 
 // Activate for more log output
 // #define DEBUG
-
   
 #define PROBE_COUNT 50
 #define MICROS 1000000.
-// #define KORREKTUR 1.001341341
-#define KORREKTUR 1.
+#define KORREKTUR 1.001341341
+//#define KORREKTUR 1.
 
 int min;
 int max;
@@ -25,11 +24,16 @@ long end;
 
 void setup()
 {  
+  pinMode(LED_BUILTIN, OUTPUT);
   Serial.begin( 9600 );
 
   analogReference( INTERNAL );
   
-  Serial.println( "reading 10000 samples ..." );
+ // Serial.println( "reading 5000 samples ..." );
+  
+
+
+
   
   for ( i = 0; i < 10000; i++ )
   {
@@ -48,8 +52,9 @@ void setup()
 void loop()
 {
   start = end;
-  min = 1024;
-  max = 0;
+ min = 1024;
+ max = 0;
+ 
   for ( i = 0; i < PROBE_COUNT; i++ )
   {
     period();
@@ -63,8 +68,9 @@ void loop()
   Serial.print( max );
   Serial.print( " " );
 #endif
-
-  Serial.println( freq, 3 );
+  Serial.println( freq*100-2, 1 );
+  //Serial.println ( freq-0.02, 3 );
+  if ( freq < 49.9 ) digitalWrite(LED_BUILTIN, HIGH);
 }
 
 void period()
@@ -82,4 +88,3 @@ int analogReadPlus()
   
   return val;
 }
-

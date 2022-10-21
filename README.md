@@ -1,5 +1,9 @@
 # Bestimmung der Netzfrequenz mittels Arduino
 
+Von mir hier ins Arduino reingemurkst:
+
+Skalierung mal 100 für bessere Plotteranzeige und integrierte Arduino-LED als Alarm bei unterschreiten einer Frequenz
+
 Dieser kleine Sketch zeigt wie man mittels einer einfachen kurzen Antenne
 an einem Analog-Port des Arduinos die aktuelle Netzfrequenz des Stromnetzes
 messen kann.
